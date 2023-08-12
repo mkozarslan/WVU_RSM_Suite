@@ -122,13 +122,13 @@ int main(int argc, char *argv[]) {
     }
 #if HAVE_MPI
     FILE *ftot = fopen("tempfiles/Cdout.dat", "w");
-    FILE *ftota = fopen("Outputs/Area_Regression_Models/Aout.dat","w");
+    FILE *ftota = fopen("Outputs/Projected_Area/Aout.dat","w");
     if (ftot == NULL) {
         printf("Error opening %s\n", "tempfiles/Cdout.dat");
         exit(1);
     }
      if (ftota == NULL) {
-        printf("Error opening %s\n", "Outputs/Area_Regression_Models/Aout.dat");
+        printf("Error opening %s\n", "Outputs/Projected_Area/Aout.dat");
         exit(1);
     }
 #endif /* HAVE_MPI */
@@ -314,7 +314,7 @@ int main(int argc, char *argv[]) {
     speciesname = "H";
   }
   printf("SpeciesName: %s\n", speciesname);
-  sprintf(areafilename, "Outputs/Area_Regression_Models/area_%s_%s%d.dat", objname,zeros,rank);
+  sprintf(areafilename, "Outputs/Projected_Area/area_%s_%s%d.dat", objname,zeros,rank);
   FILE *farea = fopen(areafilename, "w");
   if(farea == NULL)
   {
@@ -374,7 +374,7 @@ int main(int argc, char *argv[]) {
 #else /* HAVE_MPI */
 
   FILE *farea = fopen(areafilename, "w");
-  sprintf(areafilename, "Outputs/Area_Regression_Models/area_%s.dat", objname);  
+  sprintf(areafilename, "Outputs/Projected_Area/area_%s.dat", objname);  
   //printf("Loop on NUM_POINTS\n");
   sprintf(filename,"%s",objname);
   for(i=0; i<NUM_POINTS; i++) {    // Parallel Loop
@@ -426,7 +426,7 @@ int main(int argc, char *argv[]) {
       //printf("Creating tempfiles/Cdout_%s%d.dat\n", zeros,i);
       sprintf(outfilename, "tempfiles/Cdout_%s%d.dat", zeros, i);
       fout = fopen(outfilename, "r");
-      sprintf(areaoutfilename,"Outputs/Area_Regression_Models/area_%s_%s%d.dat", objname,zeros,i);
+      sprintf(areaoutfilename,"Outputs/Projected_Area/area_%s_%s%d.dat", objname,zeros,i);
       farea = fopen(areaoutfilename,"r");
       if(fout == NULL)
       {printf("Error opening %s\n",outfilename);
