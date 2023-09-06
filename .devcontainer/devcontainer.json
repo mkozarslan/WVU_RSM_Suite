@@ -1,0 +1,23 @@
+{
+    "name": "RSM+TPM Development",
+    "build": {
+        "dockerfile": "Dockerfile"
+    },
+    "settings": {
+        "terminal.integrated.shell.linux": "/bin/bash"
+    },
+    "extensions": [
+        "ms-python.python"
+    ],
+    "postCreateCommand": "echo 'Development environment setup complete!'",
+    "runArgs": [
+        "--cap-add=SYS_PTRACE",
+        "--security-opt",
+        "seccomp=unconfined"
+    ],
+    "remoteUser": "vscode",
+    "mounts": [
+        "source=ssh-agent,target=/ssh-agent,type=bind"
+    ],
+    "forwardPorts": []
+}
